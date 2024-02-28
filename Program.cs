@@ -4,47 +4,32 @@
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello, World!");
-            int[] selection_sort_numbers = { 5,72,3,14,7,1 };
-            Console.WriteLine("These are the Numbers before Sorting.!");
-            foreach (int i in selection_sort_numbers)
+            int[] arr = { 5, 72, 3, 14, 7, 1 };
+            BubbleSort(arr);
+            Console.WriteLine("Sorted array:");
+            foreach (int value in arr)
             {
-                Console.Write(i);
-                Console.Write(' ');
+                Console.Write(value + " ");
             }
-            Console.WriteLine();
-            int[] sorted_arr = Selection_Sort(selection_sort_numbers);
-            Console.WriteLine("These are the Numbers after Sorting.!");
-            foreach (int i in sorted_arr)
-            {
-                Console.Write(i);
-                Console.Write(' ');
-            }
-            
+
         }
 
-        static int[] Selection_Sort(int[] arr)
+        static void BubbleSort(int[] arr)
         {
             int n = arr.Length;
-            int[] sortedArr = new int[n];
-            Array.Copy(arr, sortedArr, n);
-
             for (int i = 0; i < n - 1; i++)
             {
-                int minIndex = i;
-                for (int j = i + 1; j < n; j++)
+                for (int j = 0; j < n - i - 1; j++)
                 {
-                    if (sortedArr[j] < sortedArr[minIndex])
+                    if (arr[j] > arr[j + 1])
                     {
-                        minIndex = j;
+
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
                     }
                 }
-                int temp = sortedArr[minIndex];
-                sortedArr[minIndex] = sortedArr[i];
-                sortedArr[i] = temp;
             }
-
-            return sortedArr;
-        } 
+        }
     }
 }
